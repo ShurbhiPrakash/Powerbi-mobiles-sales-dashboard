@@ -1,0 +1,103 @@
+select *
+from customers;
+
+select *
+from orders;
+
+select 
+	id,
+	first_name,
+	order_id,
+	sales
+from customers
+inner join orders
+on id=customer_id
+
+SELECT 
+	ID,
+	first_name,
+	order_id,
+	sales
+FROM customers
+LEFT JOIN orders
+ON ID = customer_id
+
+SELECT *
+FROM customers
+RIGHT JOIN orders
+ON id=customer_id
+
+SELECT 
+	ID,
+	order_id,
+	first_name,
+	sales
+FROM orders
+LEFT JOIN customers
+ON customer_id=id
+
+SELECT 
+ID,
+first_name,
+order_id,
+sales
+FROM customers
+FULL JOIN orders
+ON id=customer_id
+
+SELECT *
+FROM customers
+LEFT JOIN orders
+ON id=customer_id
+WHERE customer_id IS NULL
+
+SELECT * 
+FROM customers
+RIGHT JOIN orders
+ON id=customer_id
+WHERE ID IS NULL
+
+SELECT *
+FROM orders
+LEFT JOIN customers
+ON id=customer_id
+WHERE id IS NULL
+
+SELECT *
+FROM customers
+FULL JOIN orders
+ON id=customer_id
+WHERE id IS NULL
+OR customer_id IS NULL
+
+SELECT*
+FROM customers
+LEFT JOIN orders
+ON id=customer_id
+WHERE customer_id IS NOT NULL
+
+SELECT *
+FROM customers
+CROSS JOIN orders
+
+USE SalesDB
+
+select 
+	o.orderid,
+	o.sales,
+	c.firstname as customerfirstname,
+	c.lastname as customerlastname,
+	p.product,
+	p.price,
+	e.firstname as employefirstname, 
+	e.lastname as employelastname
+from sales.orders as o
+left join sales.customers as c
+on o.customerid=c.customerid
+left join sales.products as p
+on o.productid=p.productid
+left join sales.employees as e
+on o.salespersonid=e.employeeID
+
+
+select * from sales.employees
